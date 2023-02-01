@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 function Layout({ title, content, children }) {
   return (
-    <div className="flex flex-col align-center justify-between min-h-screen bg-violet-200">
+    <div className="flex flex-col align-center justify-between min-h-screen bg-gray-200">
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={content} />

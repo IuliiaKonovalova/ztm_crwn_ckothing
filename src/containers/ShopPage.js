@@ -33,23 +33,28 @@ const ShopPage = () => {
   return (
     <Layout title="Products">
       <div className=" flex-auto flex-col items-center my-4 max-w-screen-xl">
-        <h1 className="text-4xl font-semibold mb-8 text-center">
-          Shop now!
+        <h1 className="text-4xl font-semibold my-16 text-center">
+          Shop 
+          <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-600 px-4 relative inline-block mx-4">
+            <span class="relative text-white">annoyed</span>
+          </span>
+          now!
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        
+        <div className="flex flex-wrap justify-center items-center">
           {productsCategories.map((category) => {
             return (
-              <div
+              <a
                 key={category.id}
-                className="bg-white p-1 rounded-lg shadow-lg flex flex-col items-center justify-center w-64 h-64 border-2 border-gray-500 rounded-lg"
+                className="bg-white p-4 m-1 md:m-2 lg:m-3 rounded-lg shadow-lg flex flex-col items-center justify-center w-96 h-96 border-2 border-gray-500 rounded-lg hover:p-1 cursor-pointer"
               >
                 {/* add image as a background */}
                 <img src={category.imageUrl} alt={category.name} className="w-full h-full object-cover rounded-lg" />
-                <div className="absolute top-50 left-50 transform -translate-x-50 -translate-y-50 border-2 border-gray-500 rounded-lg p-4 flex flex-col items-center justify-center bg-violet-100">
+                <div className="absolute top-50 left-50 transform -translate-x-50 -translate-y-50 border-2 border-gray-500 rounded-lg p-4 flex flex-col items-center justify-center bg-gray-100">
                   <h2 className="text-lg font-semibold mb-4">{category.name}</h2>
                   <p className="text-gray-600 mb-2">Shop now!</p>
                 </div>
-            </div>
+            </a>
             )
           })}
 
