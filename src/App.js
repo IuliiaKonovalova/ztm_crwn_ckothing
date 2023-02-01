@@ -4,6 +4,7 @@ import React, { lazy, Suspense } from 'react';
 
 const HomePage = lazy(() => import("./containers/HomePage"));
 const ShopPage = lazy(() => import("./containers/ShopPage"));
+const SignInPage = lazy(() => import("./containers/SignInPage"));
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
+            <Route path="/signin" element={<SignInPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
