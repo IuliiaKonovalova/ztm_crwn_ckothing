@@ -1,11 +1,15 @@
 import Layout from "../components/Layout";
-import { signInWithGooglePopup } from "../utils/firebase/firebase.utils";
+import {
+  signInWithGooglePopup,
+  createUserDocumentFromAuth
+} from "../utils/firebase/firebase.utils";
 
 const SignInPage = () => {
 
   const logGoogleUser = async() => {
-    const response = await signInWithGooglePopup();
-    console.log(response);
+    const {user} = await signInWithGooglePopup();
+    const userDocRef = await createUserDocumentFromAuth(user)
+    console.log(userDocRef);
   }
   return (
     <Layout title="Sign In">
