@@ -1,41 +1,33 @@
 import Layout from "../components/Layout";
-import { useEffect } from "react";
-import { getRedirectResult } from "firebase/auth";
-import {
-  signInWithGooglePopup,
-  createUserDocumentFromAuth,
-  signInWithGoogleRedirect,
-  auth,
-} from "../utils/firebase/firebase.utils";
+
+import { Link } from "react-router-dom";
+import SignInForm from "../components/SignInForm";
+import GoogleAuthenticationBlock from "../components/GoogleAuthentication";
 
 const SignInPage = () => {
-  useEffect(() => {
-    const logGoogleRedirectUser = async () => {
-      const response = await getRedirectResult(auth);
-      console.log(response);
-      if (response) {
-        const userDocRef = await createUserDocumentFromAuth(response.user);
-        console.log(userDocRef);
-      }
-    };
-    logGoogleRedirectUser();
-  }, []);
 
-  const logGoogleRedirectUser = async() => {
-    const {user} = await signInWithGoogleRedirect();
-    const userDocRef = await createUserDocumentFromAuth(user)
-    console.log(userDocRef);
-  }
 
   return (
     <Layout title="Sign In">
-      <h1>Sign In Page</h1>
-      <button
-        className="bg-gray-900 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
-        onClick={logGoogleRedirectUser}
-      >
-        Sign In with Google Redirect
-      </button>
+      <h1
+        className="text-2xl my-6 font-bold text-center"
+      >Get started</h1>
+      <GoogleAuthenticationBlock />
+
+      <div className="flex justify-center items-center">
+        <div>
+          Already have an account?
+        </div>
+        <Link
+          className="ml-2 text-blue-500 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded"
+          to="/signup"
+        >
+          Sign Up
+        </Link>
+      </div>
+      <div>
+        <SignInForm />
+      </div>
     </Layout>
   )
 }
