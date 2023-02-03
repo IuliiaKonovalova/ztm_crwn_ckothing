@@ -23,9 +23,9 @@ const SignInForm = () => {
         data.email,
         data.password
       );
-      await signInAuthUserWithEmailAndPassword(user, { name: data.name });
+      await createUserDocumentFromAuth(user);
     } catch (error) {
-      console.log("User creation error: ", error);
+      console.log("User signin with email error: ", error);
     }
   };
 
