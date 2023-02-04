@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../context/user.context"
+import { signOutUser } from "../utils/firebase/firebase.utils"
 
 const Navbar = () => {
   const [auth, setAuth] = useState(false)
   // Set the current user
-  const { currentUser } = useContext(UserContext)
+  const { currentUser, setCurrentUser } = useContext(UserContext)
   console.log(currentUser)
   // console.log(currentUser.email)
   useEffect(() => {
@@ -17,6 +18,19 @@ const Navbar = () => {
       console.log("auth is false")
     }
   }, [currentUser])
+
+  const signOutHandler = async() => {
+    console.log("sign out handler")
+    try {
+      await signOutUser()
+      setCurrentUser(null)
+      setAuth(false)
+    } catch (error) {
+      console.log(error)
+    } 
+  }
+
+
   return(
     <nav className="flex items-center justify-between flex-wrap bg-gray-700 p-6">
         <ul className="flex uppercase w-full justify-between text-white font-bold">
@@ -29,12 +43,12 @@ const Navbar = () => {
           {auth ? (
             <>
               <li className="mr-6">
-                <Link
+                <button
                   className="hover:text-pink-300"
-                  to="/signin"
+                  onClick={signOutHandler}
                 >
                   Sign Out
-                  </Link>
+                  </button>
               </li>
             </>
           ) : (
