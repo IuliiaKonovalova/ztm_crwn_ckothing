@@ -1,9 +1,10 @@
 import Layout from "../components/Layout";
-import SHOP_DATA from "../data/shop-data";
+import { useContext } from "react";
+import { ProductsContext } from "../context/products.context";
 
 const ShopPage = () => {
 
-  const productsAll = SHOP_DATA;
+  const { products } = useContext(ProductsContext);
 
   return (
     <Layout title="Products">
@@ -13,7 +14,7 @@ const ShopPage = () => {
         </h1>
         
         <div className="flex flex-wrap justify-center items-center">
-          {productsAll.map((product) => {
+          {products.map((product) => {
             return (
               <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/5 p-4">
                 <a
