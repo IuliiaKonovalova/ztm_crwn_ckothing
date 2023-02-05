@@ -24,9 +24,9 @@ const GoogleAuthenticationBlock = () => {
 
 
   const logGoogleRedirectUser = async() => {
-    const {user} = await signInWithGoogleRedirect();
-    const userDocRef = await createUserDocumentFromAuth(user)
-    console.log(userDocRef);
+    await signInWithGoogleRedirect();
+
+
   }
 
   return (
