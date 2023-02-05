@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../utils/firebase/firebase.utils";
+
+import { UserContext } from "../context/user.context";
 
 const SignInForm = () => {
 
@@ -10,6 +12,10 @@ const SignInForm = () => {
     email: "",
     password: "",
   });
+
+  const { setCurrentUser } = useContext(UserContext);
+
+  
 
   const handleSubmit = async (data, form) => {
     console.log(data);
