@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { lazy, Suspense } from 'react';
 import { UserProvider } from './context/user.context';
+import { ProductsProvider } from './context/products.context';
 
 const HomePage = lazy(() => import("./containers/HomePage"));
 const ShopPage = lazy(() => import("./containers/ShopPage"));
@@ -13,14 +14,16 @@ function App() {
     <>
       <BrowserRouter>
         <UserProvider>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/shop" element={<ShopPage />} />
-              <Route path="/signin" element={<SignInPage />} />
-              <Route path="/signup" element={<SignUpPage />} />
-            </Routes>
-          </Suspense>
+          <ProductsProvider>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/shop" element={<ShopPage />} />
+                <Route path="/signin" element={<SignInPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+              </Routes>
+            </Suspense>
+          </ProductsProvider>
         </UserProvider>
       </BrowserRouter>
     </>
