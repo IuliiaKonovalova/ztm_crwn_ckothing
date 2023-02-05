@@ -6,7 +6,7 @@ import { signOutUser } from "../utils/firebase/firebase.utils"
 const Navbar = () => {
   const [auth, setAuth] = useState(false)
   // Set the current user
-  const { currentUser, setCurrentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
   console.log(currentUser)
   // console.log(currentUser.email)
   useEffect(() => {
@@ -19,16 +19,7 @@ const Navbar = () => {
     }
   }, [currentUser])
 
-  const signOutHandler = async() => {
-    console.log("sign out handler")
-    try {
-      await signOutUser()
-      setCurrentUser(null)
-      setAuth(false)
-    } catch (error) {
-      console.log(error)
-    } 
-  }
+
 
 
   return(
@@ -45,7 +36,7 @@ const Navbar = () => {
               <li className="mr-6">
                 <button
                   className="hover:text-pink-300"
-                  onClick={signOutHandler}
+                  onClick={signOutUser}
                 >
                   Sign Out
                   </button>
