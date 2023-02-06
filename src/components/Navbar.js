@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../context/user.context"
 import { signOutUser } from "../utils/firebase/firebase.utils"
+import CartIcon from "../assets/images/shopping-bag.svg"
 
 const Navbar = () => {
   const [auth, setAuth] = useState(false)
@@ -19,9 +20,6 @@ const Navbar = () => {
     }
   }, [currentUser])
 
-
-
-
   return(
     <nav className="flex items-center justify-between flex-wrap bg-gray-700 p-6">
         <ul className="flex uppercase w-full justify-between text-white font-bold">
@@ -30,6 +28,12 @@ const Navbar = () => {
           </li>
           <li className="mr-6">
             <Link className=" hover:text-pink-300" to="/shop">Shop</Link>
+          </li>
+          <li className="mr-6">
+            <div className="hover:text-pink-300" to="/cart">
+              {/* style CartIcon svg with Tailwind */}
+              <img src={CartIcon} alt="cart icon" className="w-6 h-6" />
+            </div>
           </li>
           {auth ? (
             <>
