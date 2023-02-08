@@ -2,7 +2,7 @@ const BagDropdown = ({ bag, removeItem }) => {
   return (
     <div className="absolute right-0 w-64 mt-2 origin-top-right rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
       <div className="py-1">
-        {products.map((item) => {
+        {/* {bag.map((item) => {
           return (
             <div className="flex items-center justify-between px-4 py-3">
               <div className="flex items-center">
@@ -18,10 +18,29 @@ const BagDropdown = ({ bag, removeItem }) => {
                   <p className="text-sm text-gray-500">{item.price}</p>
                 </div>
               </div>
+              <div className="flex items-center">
+                <button
+                  className="p-1 text-gray-400 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                  aria-label="Remove"
+                >
+                  <span className="sr-only">Remove</span>
+                  <svg
+                    className="w-5 h-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
 
+                      d="M6 18a2 2 0 002 2h4a2 2 0 002-2V6H6v12zm2-9a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1H9a1 1 0 01-1-1V9z"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           );
-        })}
+        })} */}
       </div>
       <div className="px-4 py-3">
         <p className="text-sm text-gray-500">
