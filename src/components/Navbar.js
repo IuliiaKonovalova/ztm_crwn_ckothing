@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { UserContext } from "../context/user.context"
 import { signOutUser } from "../utils/firebase/firebase.utils"
 import CartIcon from "../assets/images/shopping-bag.svg"
+import BagDropdown from "./BagDropdown"
 
 const Navbar = () => {
   const [auth, setAuth] = useState(false)
@@ -30,10 +31,11 @@ const Navbar = () => {
             <Link className=" hover:text-pink-300" to="/shop">Shop</Link>
           </li>
           <li className="mr-6">
-            <div className="hover:text-pink-300" to="/cart">
+            <div className="hover:text-pink-300 absolute" to="/cart">
               {/* style CartIcon svg with Tailwind */}
               <img src={CartIcon} alt="cart icon" className="w-6 h-6" />
             </div>
+            <BagDropdown />
           </li>
           {auth ? (
             <>
