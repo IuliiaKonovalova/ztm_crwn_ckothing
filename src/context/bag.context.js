@@ -3,17 +3,27 @@ import { createContext, useState } from "react";
 
 import shopping_bag from "../assets/shopping-bag.svg";
 
-export const ProductsContext = createContext({
+export const BagContext = createContext({
   products: [],
+  isBagDropdownOpen: false,
+  setIsBagDropdownOpen: () => {},
 });
 
-export const ProductsProvider = ({ children }) => {
+export const BagProvider = ({ children }) => {
   const [products, setProducts] = useState(PRODUCTS_DATA);
-  const value = { products };
+
+  const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
+
+  const value = {
+    isBagDropdownOpen,
+    setIsBagDropdownOpen,
+    products,
+    setProducts,
+  };
 
   return (
-    <ProductsContext.Provider value={value}>
+    <BagContext.Provider value={value}>
       {children}
-    </ProductsContext.Provider>
+    </BagContext.Provider>
   );
 }
