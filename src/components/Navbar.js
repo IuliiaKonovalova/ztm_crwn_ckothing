@@ -2,13 +2,17 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../context/user.context"
 import { signOutUser } from "../utils/firebase/firebase.utils"
-import CartIcon from "../assets/images/shopping-bag.svg"
+
 import BagDropdown from "./BagDropdown"
+import { BagContext } from "../context/bag.context"
 
 const Navbar = () => {
   const [auth, setAuth] = useState(false)
   // Set the current user
   const { currentUser } = useContext(UserContext)
+
+  const { isBagDropdownOpen } = useContext(BagContext)
+
   console.log(currentUser)
   // console.log(currentUser.email)
   useEffect(() => {
@@ -33,9 +37,9 @@ const Navbar = () => {
           <li className="mr-6">
             <div className="hover:text-pink-300 absolute" to="/cart">
               {/* style CartIcon svg with Tailwind */}
-              <img src={CartIcon} alt="cart icon" className="w-6 h-6" />
+              < BagDropdown />
             </div>
-            <BagDropdown />
+            {isBagDropdownOpen && <BagDropdown />}
           </li>
           {auth ? (
             <>
