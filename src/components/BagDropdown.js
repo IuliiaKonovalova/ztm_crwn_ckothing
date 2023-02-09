@@ -1,6 +1,19 @@
+import { useContext } from "react";
+import { BagContext } from "../context/bag.context";
+import CartIcon from "../assets/images/shopping-bag.svg"
+
+
 const BagDropdown = ({ bag, removeItem }) => {
+
+  const { isBagDropdownOpen, setIsBagDropdownOpen } = useContext(BagContext);
+
+  const toggleBagDropdown = () => {
+    setIsBagDropdownOpen(!isBagDropdownOpen);
+  };
+
   return (
     <div className="absolute right-0 w-64 mt-2 origin-top-right rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
+      <img src={CartIcon} alt="cart icon" className="w-6 h-6" />
       <div className="py-1">
         {/* {bag.map((item) => {
           return (
