@@ -12,14 +12,15 @@ const Navbar = () => {
   // Set the current user
   const { currentUser } = useContext(UserContext)
 
+  // Set the bag dropdown
   const { isBagDropdownOpen, setIsBagDropdownOpen } = useContext(BagContext);
-  
+  // Toggle the bag dropdown
   const toggleBagDropdown = () => {
     setIsBagDropdownOpen(!isBagDropdownOpen);
   };
 
   console.log(currentUser)
-  // console.log(currentUser.email)
+
   useEffect(() => {
     if (currentUser !== null && currentUser !== undefined) {
       setAuth(true)
@@ -38,14 +39,6 @@ const Navbar = () => {
           </li>
           <li className="mr-6">
             <Link className=" hover:text-pink-300" to="/shop">Shop</Link>
-          </li>
-          <li className="mr-6">
-            <div className="hover:text-pink-300 absolute" to="/cart">
-              {isBagDropdownOpen && <BagDropdown />}
-              <button onClick={toggleBagDropdown}>
-                <img src={BagIcon} alt="cart icon" className="w-6 h-6" />
-              </button>
-            </div>
           </li>
           {auth ? (
             <>
@@ -69,6 +62,14 @@ const Navbar = () => {
           </>
           )
           }
+          <li className="mr-6">
+            <div className="hover:text-pink-300 absolute" to="/cart">
+              {isBagDropdownOpen && <BagDropdown />}
+              <button onClick={toggleBagDropdown}>
+                <img src={BagIcon} alt="cart icon" className="w-6 h-6" />
+              </button>
+            </div>
+          </li>
         </ul>
     </nav>
   )
