@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 
-import shopping_bag from "../assets/shopping-bag.svg";
+
 
 export const BagContext = createContext({
   products: [],
@@ -10,15 +10,15 @@ export const BagContext = createContext({
 });
 
 export const BagProvider = ({ children }) => {
-  const [products, setProducts] = useState(PRODUCTS_DATA);
+  // const [products, setProducts] = useState(PRODUCTS_DATA);
 
   const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
 
   const value = {
     isBagDropdownOpen,
     setIsBagDropdownOpen,
-    products,
-    setProducts,
+    // products,
+    // setProducts,
   };
 
   return (
