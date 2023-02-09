@@ -5,13 +5,18 @@ import { signOutUser } from "../utils/firebase/firebase.utils"
 
 import BagDropdown from "./BagDropdown"
 import { BagContext } from "../context/bag.context"
+import BagIcon from "../assets/images/shopping-bag.svg"
 
 const Navbar = () => {
   const [auth, setAuth] = useState(false)
   // Set the current user
   const { currentUser } = useContext(UserContext)
 
-  const { isBagDropdownOpen } = useContext(BagContext)
+  const { isBagDropdownOpen, setIsBagDropdownOpen } = useContext(BagContext);
+  
+  const toggleBagDropdown = () => {
+    setIsBagDropdownOpen(!isBagDropdownOpen);
+  };
 
   console.log(currentUser)
   // console.log(currentUser.email)
@@ -36,10 +41,11 @@ const Navbar = () => {
           </li>
           <li className="mr-6">
             <div className="hover:text-pink-300 absolute" to="/cart">
-              {/* style CartIcon svg with Tailwind */}
-              < BagDropdown />
+              {isBagDropdownOpen && <BagDropdown />}
+              <button onClick={toggleBagDropdown}>
+                <img src={BagIcon} alt="cart icon" className="w-6 h-6" />
+              </button>
             </div>
-            {isBagDropdownOpen && <BagDropdown />}
           </li>
           {auth ? (
             <>
