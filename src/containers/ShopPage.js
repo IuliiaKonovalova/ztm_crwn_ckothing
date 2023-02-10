@@ -8,6 +8,10 @@ const ShopPage = () => {
   const { products } = useContext(ProductsContext);
 
   const { addItemsToBag } = useContext(BagContext);
+  const addItemFromShopToBag = (product)=> {
+    addItemsToBag(product)
+  }
+
 
   return (
     <Layout title="Products">
@@ -40,7 +44,7 @@ const ShopPage = () => {
                     <div className="flex items-center">
                       <div className="flex items-center">
                         <button
-                          onClick={() => addItemsToBag(product)}
+                          onClick={() => addItemFromShopToBag(product)}
                           className="p-1 text-gray-400 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                           aria-label="Add to bag"
                         >
