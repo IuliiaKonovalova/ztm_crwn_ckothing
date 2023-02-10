@@ -62,10 +62,13 @@ const Navbar = () => {
           </>
           )
           }
-          <li className="mr-6">
+          <li className="mr-6 px-5">
             <div className="hover:text-pink-300 absolute" to="/cart">
               {isBagDropdownOpen && <BagDropdown />}
-              <button onClick={toggleBagDropdown}>
+              <button
+                onClick={toggleBagDropdown}
+                className="relative"
+              >
                 <img src={BagIcon} alt="cart icon" className="w-6 h-6" />
               </button>
             </div>
