@@ -3,16 +3,20 @@ import { BagContext } from "../context/bag.context";
 import CartIcon from "../assets/images/shopping-bag.svg"
 
 
-const BagDropdown = ({ bag, removeItem }) => {
+const BagDropdown = ({ bag, quantity }) => {
 
-  const { isBagDropdownOpen, setIsBagDropdownOpen } = useContext(BagContext);
+  const { 
+    isBagDropdownOpen,
+    setIsBagDropdownOpen,
+    bagProducts,
+  } = useContext(BagContext);
 
   return (
     <>
-      <div id="bag-dropdown" className="absolute top-6 right-0 w-64 mt-2 origin-top-right rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
+      <div id="bag-dropdown" className="opacity-100 absolute top-6 right-0 w-64 mt-2 origin-top-right rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
         <div className="py-1">
-          {/* {bag.map((item) => {
-            return (
+          {bagProducts.map((item) => {
+
               <div className="flex items-center justify-between px-4 py-3">
                 <div className="flex items-center">
                   <img
@@ -25,6 +29,11 @@ const BagDropdown = ({ bag, removeItem }) => {
                       {item.name}
                     </p>
                     <p className="text-sm text-gray-500">{item.price}</p>
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-sm font-medium text-gray-900">
+                      Quantity: <span className="font-medium">{item.quantity}</span>
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -48,8 +57,8 @@ const BagDropdown = ({ bag, removeItem }) => {
                   </button>
                 </div>
               </div>
-            );
-          })} */}
+
+          })}
         </div>
         <div className="px-4 py-3">
           <p className="text-sm text-gray-500">
