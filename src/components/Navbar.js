@@ -13,13 +13,28 @@ const Navbar = () => {
   const { currentUser } = useContext(UserContext)
 
   // Set the bag dropdown
-  const { isBagDropdownOpen, setIsBagDropdownOpen } = useContext(BagContext);
+  const { isBagDropdownOpen, setIsBagDropdownOpen, bagProducts, addItemsToBag } = useContext(BagContext);
   // Toggle the bag dropdown
   const toggleBagDropdown = () => {
     setIsBagDropdownOpen(!isBagDropdownOpen);
   };
-
+  const [bagShow, setBagShow] = useState(bagProducts)
+  bagProducts.forEach(element => {
+    console.log(element.id)
+    // setBagShow(bagProducts)
+  });
+  useEffect(() => {
+    // setBagShow(bagProducts)
+    console.log("bagShow: " + bagShow)
+    console.log("bagProducts: " + bagProducts)
+    setBagShow(bagProducts)
+    console.log(bagShow)
+  }, [bagProducts, isBagDropdownOpen, toggleBagDropdown])
   console.log(currentUser)
+  // create props for bagShow
+  const bagProps = {
+    bagShow: bagShow,
+  }
 
   useEffect(() => {
     if (currentUser !== null && currentUser !== undefined) {
@@ -64,7 +79,7 @@ const Navbar = () => {
           }
           <li className="mr-6 px-5">
             <div className="hover:text-pink-300 absolute" to="/cart">
-              {isBagDropdownOpen && <BagDropdown />}
+              {isBagDropdownOpen && <BagDropdown {...bagProps}/>}
               <button
                 onClick={toggleBagDropdown}
                 className="relative"
