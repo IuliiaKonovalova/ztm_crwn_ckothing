@@ -6,7 +6,7 @@ const BagDropdown = ( bagProps ) => {
       <div id="bag-dropdown" className="
           opacity-100 absolute top-6 right-0 w-64 mt-2 origin-top-right 
           rounded-md shadow-lg bg-white ring-1 ring-gray-400  divide-y
-          divide-gray-100 focus:outline-none"
+          divide-gray-100 focus:outline-none z-50"
         >
         <div className="py-1">
           
