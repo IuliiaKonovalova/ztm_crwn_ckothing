@@ -35,9 +35,7 @@ const HomePage = () => {
       <div className=" flex-auto flex-col items-center my-4 max-w-screen-xl">
         <h1 className="text-4xl font-semibold my-16 text-center">
           Shop 
-          <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-600 px-4 relative inline-block mx-4">
-            <span class="relative text-white">annoyed</span>
-          </span>
+            <span class="relative text-pink-600 mx-2">crown</span>
           now!
         </h1>
         
