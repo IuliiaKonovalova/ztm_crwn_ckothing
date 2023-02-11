@@ -13,12 +13,12 @@ const BagDropdown = ( bagProps ) => {
           {bagShow.map((item) => {
             return (
             <div
-              className="flex items-center justify-between px-4 py-3"
+              className=" grid grid-cols-6 gap-3 py-4 px-3"
               key={item.id}
             >
-              <div className="flex items-center">
+              <div className="flex items-center col-span-4">
                 <img
-                  className="w-8 h-8 mr-4 rounded-full"
+                  className="w-8 h-8 mr-2 rounded-full"
                   src={item.imageUrl}
                   alt=" "
                 />
@@ -28,18 +28,21 @@ const BagDropdown = ( bagProps ) => {
                   </p>
                   <p className="text-sm text-gray-500">{item.price}</p>
                 </div>
-                <div className="flex items-center">
-                  <p className="font-medium text-gray-900 ml-4 text-xs lowercase">
-                    x <span className="font-medium">{item.quantity}</span>
-                  </p>
-                </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center col-span-1">
+                <p className="font-medium text-gray-900 text-xs lowercase">
+                  x <span className="font-medium">{item.quantity}</span>
+                </p>
+              </div>
+              <div className="flex items-center col-span-1">
                 <button
-                  className="p-1 text-gray-400 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                  className="p-1 text-gray-400 rounded-full
+                  hover:bg-gray-100 focus:outline-none focus:ring-2
+                  focus:ring-inset focus:ring-indigo-500 cursor-pointer"
                   aria-label="Remove"
                 >
                   <span className="sr-only">Remove</span>
+                  {/* add bin svg */}
                   <svg
                     className="w-5 h-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +51,9 @@ const BagDropdown = ( bagProps ) => {
                     aria-hidden="true"
                   >
                     <path
-
-                      d="M6 18a2 2 0 002 2h4a2 2 0 002-2V6H6v12zm2-9a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1H9a1 1 0 01-1-1V9z"
+                      fillRule="evenodd"
+                      d="M3 5a1 1 0 011-1h12a1 1 0 011 1v1H3V5zm12 2v9a2 2 0 01-2 2H7a2 2 0 01-2-2V7h10zm-4 0a1 1 0 00-1 1v5a1 1 0 002 0V8a1 1 0 00-1-1zm-4 0a1 1 0 00-1 1v5a1 1 0 002 0V8a1 1 0 00-1-1z"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </button>
