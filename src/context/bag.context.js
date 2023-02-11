@@ -17,12 +17,26 @@ const addBagItems = (bagProducts, productToAddToBag) => {
   return [...bagProducts, { ...productToAddToBag, quantity: 1 }]
 }
 
+const removeProductFromBag = (bagProducts, productToRemoveFromBag) => {
+  const existingBagItem = bagProducts.find(
+    (bagProduct) => bagProduct.id === productToRemoveFromBag.id
+  );
+
+
+  existingBagItem.quantity = 0;
+
+  const newBagProducts = bagProducts.filter((bagProduct) =>
+    bagProduct.id !== productToRemoveFromBag.id);
+  return newBagProducts;
+}
+
 export const BagContext = createContext({
   isBagDropdownOpen: false,
   setIsBagDropdownOpen: () => {},
   bagProducts: [],
   addItemsToBag: () => {},
   bagTotalItemsCount: 0,
+  removeItemsFromBag: () => {},
 });
 
 export const BagProvider = ({ children }) => {
@@ -38,6 +52,10 @@ export const BagProvider = ({ children }) => {
     setProductToBag(addBagItems(bagProducts, productToAddToBag))
   }
 
+  const removeItemsFromBag = (productToRemoveFromBag) => {
+    setProductToBag(removeProductFromBag(bagProducts, productToRemoveFromBag))
+  }
+
   const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
 
   const value = {
@@ -46,6 +64,7 @@ export const BagProvider = ({ children }) => {
     bagProducts,
     addItemsToBag,
     bagTotalItemsCount,
+    removeItemsFromBag,
   };
 
   return (
