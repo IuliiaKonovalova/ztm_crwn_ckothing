@@ -30,7 +30,7 @@ export const BagProvider = ({ children }) => {
   const [bagTotalItemsCount, setBagTotalItemsCount] = useState(0);
 
   useEffect(() => {
-    let newTotalItemsCount = bagProducts.reduce((accumulator,   ) => accumulator + bagProduct.quantity, 0);
+    let newTotalItemsCount = bagProducts.reduce((accumulator, bagProduct) => accumulator + bagProduct.quantity, 0);
     setBagTotalItemsCount(newTotalItemsCount);
   }, [bagProducts]);
 
