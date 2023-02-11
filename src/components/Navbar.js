@@ -13,12 +13,21 @@ const Navbar = () => {
   const { currentUser } = useContext(UserContext)
 
   // Set the bag dropdown
-  const { isBagDropdownOpen, setIsBagDropdownOpen, bagProducts, addItemsToBag } = useContext(BagContext);
+  const {
+    isBagDropdownOpen,
+    setIsBagDropdownOpen,
+    bagProducts,
+    addItemsToBag,
+    bagTotalItemsCount
+  } = useContext(BagContext);
+  console.log("bagTotalItemsCount!!!!!!!   " + bagTotalItemsCount)
+
   // Toggle the bag dropdown
   const toggleBagDropdown = () => {
     setIsBagDropdownOpen(!isBagDropdownOpen);
   };
   const [bagShow, setBagShow] = useState(bagProducts)
+
   bagProducts.forEach(element => {
     console.log(element.id)
     // setBagShow(bagProducts)
@@ -35,6 +44,7 @@ const Navbar = () => {
   const bagProps = {
     bagShow: bagShow,
   }
+
 
   useEffect(() => {
     if (currentUser !== null && currentUser !== undefined) {
@@ -77,7 +87,7 @@ const Navbar = () => {
           </>
           )
           }
-          <li className="mr-6 px-5">
+          <li className="mr-6 px-5 relative">
             <div className="hover:text-pink-300 absolute" to="/cart">
               {isBagDropdownOpen && <BagDropdown {...bagProps}/>}
               <button
@@ -87,6 +97,11 @@ const Navbar = () => {
                 <img src={BagIcon} alt="cart icon" className="w-6 h-6" />
               </button>
             </div>
+            <span className="absolute top-4 left-7 bg-pink-500 text-white
+              rounded-full w-4 h-4 flex items-center justify-center p-3"
+            >
+              {bagTotalItemsCount}
+            </span>
           </li>
         </ul>
     </nav>
