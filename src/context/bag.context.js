@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 
 const addBagItems = (bagProducts, productToAddToBag) => {
@@ -21,11 +21,18 @@ export const BagContext = createContext({
   isBagDropdownOpen: false,
   setIsBagDropdownOpen: () => {},
   bagProducts: [],
-  addProductToBag: () => {},
+  addItemsToBag: () => {},
+  bagTotalItemsCount: 0,
 });
 
 export const BagProvider = ({ children }) => {
   const [bagProducts, setProductToBag] = useState([]);
+  const [bagTotalItemsCount, setBagTotalItemsCount] = useState(0);
+
+  useEffect(() => {
+    let newTotalItemsCount = bagProducts.reduce((accumulator,   ) => accumulator + bagProduct.quantity, 0);
+    setBagTotalItemsCount(newTotalItemsCount);
+  }, [bagProducts]);
 
   const addItemsToBag = (productToAddToBag) => {
     setProductToBag(addBagItems(bagProducts, productToAddToBag))
@@ -38,6 +45,7 @@ export const BagProvider = ({ children }) => {
     setIsBagDropdownOpen,
     bagProducts,
     addItemsToBag,
+    bagTotalItemsCount,
   };
 
   return (
