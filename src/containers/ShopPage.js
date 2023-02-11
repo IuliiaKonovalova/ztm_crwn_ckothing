@@ -26,13 +26,13 @@ const ShopPage = () => {
               <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/5 p-4">
                 <a
                   key={product.id}
-                  className="xl:w-52 c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+                  className="xl:w-52 p-4 c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
                 >
                   {/* add image as a background */}
                   <div className="relative pb-48 overflow-hidden">
                     <img
                       aria-hidden="true"
-                      className="absolute inset-0 h-full w-full object-cover" 
+                      className="absolute inset-0 h-full w-full object-cover p-3" 
                       src={product.imageUrl}
                       alt={product.name}
                       />
