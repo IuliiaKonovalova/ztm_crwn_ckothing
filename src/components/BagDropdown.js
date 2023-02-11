@@ -1,5 +1,13 @@
+import { useState, useEffect, useContext } from "react";
+import { BagContext } from "../context/bag.context";
+
 const BagDropdown = ( bagProps ) => {
   const { bagShow } = bagProps;
+  const { removeItemsFromBag } = useContext(BagContext);
+
+  const removeItemFromBagFromDropdown = (item) => {
+    removeItemsFromBag(item);
+  };
 
   return (
     <>
@@ -40,6 +48,7 @@ const BagDropdown = ( bagProps ) => {
                   hover:bg-gray-100 focus:outline-none focus:ring-2
                   focus:ring-inset focus:ring-indigo-500 cursor-pointer"
                   aria-label="Remove"
+                  onClick={() => removeItemFromBagFromDropdown(item)}
                 >
                   <span className="sr-only">Remove</span>
                   {/* add bin svg */}
