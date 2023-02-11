@@ -77,6 +77,12 @@ const BagDropdown = ( bagProps ) => {
           </p>
           <a
             href="#"
+            className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gray-600 border border-transparent rounded-md hover:bg-indigo-700"
+          >
+            View Bag
+          </a>
+          <a
+            href="#"
             className="flex justify-center w-full px-4 py-2 mt-1 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700"
           >
             Checkout
