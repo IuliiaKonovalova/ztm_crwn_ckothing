@@ -33,7 +33,7 @@ const BagPage = () => {
           </Link>
         </div>
         ) : (
-          <div className="grid items-center bg-pink-300">
+          <div className="grid items-center">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
               <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -41,16 +41,16 @@ const BagPage = () => {
                     <th scope="col" class="px-6 py-3">
                       <span class="sr-only">Image</span>
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                       Product
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                       Qty
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-1 py-3 text-s">
                       Price
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                       <svg
                         className="w-5 h-5"
                         xmlns="http://www.w3.org/2000/svg"
@@ -67,20 +67,22 @@ const BagPage = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody
+                  className=""
+                >
                   {bagProducts.map((product) => {
                     return (
                       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="flex items-center py-2 sm:w-20">
+                        <td class="flex items-center py-2 ml-2 sm:w-20">
                             <img
                               src={product.imageUrl}
-                              alt="Apple Imac"
+                              alt={product.name}
                               />
                         </td>
-                        <td class="pl-2 py-2 font-semibold text-gray-900 dark:text-white">
+                        <td class="pl-2 py-2  lg:p-6 font-semibold text-gray-900 dark:text-white mr-4">
                             {product.name}
                         </td>
-                        <td class=" py-2">
+                        <td class=" py-2 lg:p-6">
                             <div class="flex items-center space-x-3">
                                 <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                                     <span class="sr-only">Quantity button</span>
