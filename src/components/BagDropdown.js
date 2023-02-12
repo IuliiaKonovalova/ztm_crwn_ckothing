@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { BagContext } from "../context/bag.context";
 
 const BagDropdown = ( bagProps ) => {
@@ -51,7 +52,6 @@ const BagDropdown = ( bagProps ) => {
                   onClick={() => removeItemFromBagFromDropdown(item)}
                 >
                   <span className="sr-only">Remove</span>
-                  {/* add bin svg */}
                   <svg
                     className="w-5 h-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -75,12 +75,12 @@ const BagDropdown = ( bagProps ) => {
           <p className="text-sm text-gray-500">
             Subtotal <span className="font-medium">$0.00</span>
           </p>
-          <a
-            href="#"
-            className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gray-600 border border-transparent rounded-md hover:bg-indigo-700"
+          <Link
+            to="/bag"
+            className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gray-600 border border-transparent rounded-md hover:bg-gray-700"
           >
             View Bag
-          </a>
+          </Link>
           <a
             href="#"
             className="flex justify-center w-full px-4 py-2 mt-1 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700"
