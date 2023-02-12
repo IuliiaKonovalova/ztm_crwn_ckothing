@@ -10,10 +10,13 @@ const BagPage = () => {
     setIsBagDropdownOpen,
     bagProducts,
     addItemsToBag,
-    bagTotalItemsCount
+    bagTotalItemsCount,
+    removeItemsFromBag
   } = useContext(BagContext);
 
-
+  const removeItemFromBagFromDropdown = (item) => {
+    removeItemsFromBag(item);
+  };
 
   return (
     <Layout title="Products">
@@ -21,7 +24,7 @@ const BagPage = () => {
         <h1 className="text-4xl font-semibold my-16 text-center">
           Bag
         </h1>
-        {bagProducts === 0 ? (
+        {bagProducts.length === 0 ? (
           <div className="flex flex-col items-center">
           <h1 className="text-2xl font-semibold my-6 text-center">
             Your bag is empty
@@ -103,7 +106,8 @@ const BagPage = () => {
                             <div>
                               <input
                                 type="number"
-                                id="second_product" class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                id="second_product"
+                                class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder={product.quantity}
                                 required
                               />
@@ -143,7 +147,7 @@ const BagPage = () => {
                             hover:bg-gray-100 focus:outline-none focus:ring-2
                             focus:ring-inset focus:ring-indigo-500 cursor-pointer"
                             aria-label="Remove"
-                            onClick={() => {}}
+                            onClick={() => {removeItemFromBagFromDropdown()}}
                           >
                             <span className="sr-only">Remove</span>
                             <svg
