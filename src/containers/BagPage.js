@@ -37,23 +37,23 @@ const BagPage = () => {
         </div>
         ) : (
           <div className="grid items-center">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
-                    <th scope="col" class="px-6 py-3">
-                      <span class="sr-only">Image</span>
+                    <th scope="col" className="px-6 py-3">
+                      <span className="sr-only">Image</span>
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       Product
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       Qty
                     </th>
-                    <th scope="col" class="px-1 py-3 text-s">
+                    <th scope="col" className="px-1 py-3 text-s">
                       Price
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       <svg
                         className="w-5 h-5"
                         xmlns="http://www.w3.org/2000/svg"
@@ -75,22 +75,22 @@ const BagPage = () => {
                 >
                   {bagProducts.map((product) => {
                     return (
-                      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="flex items-center py-2 ml-2 sm:w-20">
+                      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td className="flex items-center py-2 ml-2 sm:w-20">
                             <img
                               src={product.imageUrl}
                               alt={product.name}
                               />
                         </td>
-                        <td class="pl-2 py-2  lg:p-6 font-semibold text-gray-900 dark:text-white mr-4">
+                        <td className="pl-2 py-2  lg:p-6 font-semibold text-gray-900 dark:text-white mr-4">
                             {product.name}
                         </td>
-                        <td class=" py-2 lg:p-6">
-                          <div class="flex items-center space-x-3">
-                            <button class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                              <span class="sr-only">Quantity button</span>
+                        <td className=" py-2 lg:p-6">
+                          <div className="flex items-center space-x-3">
+                            <button className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                              <span className="sr-only">Quantity button</span>
                               <svg
-                                class="w-4 h-4"
+                                className="w-4 h-4"
                                 aria-hidden="true"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
@@ -107,22 +107,22 @@ const BagPage = () => {
                               <input
                                 type="number"
                                 id="second_product"
-                                class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder={product.quantity}
                                 required
                               />
                             </div>
                             <button
-                              class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                              className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                               type="button"
                             >
                               <span
-                                class="sr-only"
+                                className="sr-only"
                               >
                                 Quantity button
                               </span>
                               <svg
-                                class="w-4 h-4"
+                                className="w-4 h-4"
                                 aria-hidden="true"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
@@ -138,10 +138,10 @@ const BagPage = () => {
                             </button>
                           </div>
                         </td>
-                        <td class="py-2 font-semibold text-gray-900 dark:text-white text-center">
+                        <td className="py-2 font-semibold text-gray-900 dark:text-white text-center">
                             ${product.price}
                         </td>
-                        <td class="py-2 text-center">
+                        <td className="py-2 text-center">
                           <button
                             className="p-1 text-gray-400 rounded-full
                             hover:bg-gray-100 focus:outline-none focus:ring-2
