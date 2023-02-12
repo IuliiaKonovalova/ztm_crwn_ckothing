@@ -20,7 +20,6 @@ const Navbar = () => {
     addItemsToBag,
     bagTotalItemsCount
   } = useContext(BagContext);
-  console.log("bagTotalItemsCount!!!!!!!   " + bagTotalItemsCount)
 
   // Toggle the bag dropdown
   const toggleBagDropdown = () => {
@@ -28,19 +27,9 @@ const Navbar = () => {
   };
   const [bagShow, setBagShow] = useState(bagProducts)
 
-  bagProducts.forEach(element => {
-    console.log(element.id)
-    // setBagShow(bagProducts)
-  });
   useEffect(() => {
-    // setBagShow(bagProducts)
-    console.log("bagShow: " + bagShow)
-    console.log("bagProducts: " + bagProducts)
     setBagShow(bagProducts)
-    console.log(bagShow)
   }, [bagProducts, isBagDropdownOpen, toggleBagDropdown])
-  console.log(currentUser)
-  // create props for bagShow
   const bagProps = {
     bagShow: bagShow,
   }
@@ -49,10 +38,8 @@ const Navbar = () => {
   useEffect(() => {
     if (currentUser !== null && currentUser !== undefined) {
       setAuth(true)
-      console.log("auth is true")
     } else {
       setAuth(false)
-      console.log("auth is false")
     }
   }, [currentUser])
 
