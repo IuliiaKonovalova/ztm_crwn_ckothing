@@ -14,7 +14,7 @@ const BagPage = () => {
     removeItemsFromBag
   } = useContext(BagContext);
 
-  const removeItemFromBagFromDropdown = (item) => {
+  const removeItemFromBagFromBagPage = (item) => {
     removeItemsFromBag(item);
   };
 
@@ -147,7 +147,7 @@ const BagPage = () => {
                             hover:bg-gray-100 focus:outline-none focus:ring-2
                             focus:ring-inset focus:ring-indigo-500 cursor-pointer"
                             aria-label="Remove"
-                            onClick={() => {removeItemFromBagFromDropdown()}}
+                            onClick={() => {removeItemFromBagFromBagPage(product)}}
                           >
                             <span className="sr-only">Remove</span>
                             <svg
