@@ -9,6 +9,7 @@ const HomePage = lazy(() => import("./containers/HomePage"));
 const ShopPage = lazy(() => import("./containers/ShopPage"));
 const SignInPage = lazy(() => import("./containers/SignInPage"));
 const SignUpPage = lazy(() => import("./containers/SignUpPage"));
+const BagPage = lazy(() => import("./containers/BagPage"));
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                   <Route path="/shop" element={<ShopPage />} />
                   <Route path="/signin" element={<SignInPage />} />
                   <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/bag" element={<BagPage />} />
                 </Routes>
               </Suspense>
             </BagProvider>
