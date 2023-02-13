@@ -81,12 +81,12 @@ const BagDropdown = ( bagProps ) => {
           >
             View Bag
           </Link>
-          <a
-            href="#"
+          <Link
+            to={"/checkout"}
             className="flex justify-center w-full px-4 py-2 mt-1 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700"
           >
             Checkout
-          </a>
+          </Link>
         </div>
       </div>
     </>
