@@ -75,7 +75,10 @@ const BagPage = () => {
                 >
                   {bagProducts.map((product) => {
                     return (
-                      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                      <tr
+                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                        key={product.id}
+                      >
                         <td className="flex items-center py-2 ml-2 sm:w-20">
                             <img
                               src={product.imageUrl}
