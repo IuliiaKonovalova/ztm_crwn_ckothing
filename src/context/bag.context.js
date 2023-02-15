@@ -14,20 +14,46 @@ const addBagItems = (bagProducts, productToAddToBag) => {
         : bagProduct
     );
   }
+
   return [...bagProducts, { ...productToAddToBag, quantity: 1 }]
 }
 
 const removeProductFromBag = (bagProducts, productToRemoveFromBag) => {
+
   const existingBagItem = bagProducts.find(
     (bagProduct) => bagProduct.id === productToRemoveFromBag.id
   );
-
+  // return bagProducts.map((bagProduct) =>
+  //   bagProduct.id === productToRemoveFromBag.id
+  //     ? { ...bagProduct, quantity: bagProduct.quantity - 1 }
+  //     : bagProduct
+  // );
 
   existingBagItem.quantity = 0;
 
   const newBagProducts = bagProducts.filter((bagProduct) =>
     bagProduct.id !== productToRemoveFromBag.id);
+
   return newBagProducts;
+}
+
+const decreaseItemsFromBagPage = (bagProducts, productToDecreaseFromBag) => {
+
+  const existingBagItem = bagProducts.find(
+    (bagProduct) => bagProduct.id === productToDecreaseFromBag.id
+  );
+
+  if (existingBagItem.quantity === 1) {
+    return bagProducts.filter(
+      (bagProduct) => bagProduct.id !== productToDecreaseFromBag.id
+    )
+  }
+
+  return bagProducts.map((bagProduct) =>
+    bagProduct.id === productToDecreaseFromBag.id
+      ? { ...bagProduct, quantity: bagProduct.quantity - 1 }
+      : bagProduct
+  );
 }
 
 export const BagContext = createContext({
@@ -37,6 +63,7 @@ export const BagContext = createContext({
   addItemsToBag: () => {},
   bagTotalItemsCount: 0,
   removeItemsFromBag: () => {},
+  decreaseItemsFromBag: () => {},
 });
 
 export const BagProvider = ({ children }) => {
@@ -56,6 +83,10 @@ export const BagProvider = ({ children }) => {
     setProductToBag(removeProductFromBag(bagProducts, productToRemoveFromBag))
   }
 
+  const decreaseItemsFromBag = (productToDecreaseFromBag) => {
+    setProductToBag(decreaseItemsFromBagPage(bagProducts, productToDecreaseFromBag))
+  }
+
   const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
 
   const value = {
@@ -65,6 +96,7 @@ export const BagProvider = ({ children }) => {
     addItemsToBag,
     bagTotalItemsCount,
     removeItemsFromBag,
+    decreaseItemsFromBag
   };
 
   return (
