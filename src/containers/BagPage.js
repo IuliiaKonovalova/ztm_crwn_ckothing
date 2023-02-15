@@ -91,7 +91,16 @@ const BagPage = () => {
                         </td>
                         <td className=" py-2 lg:p-6">
                           <div className="flex items-center space-x-3">
-                            <button className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                            <button
+                              className="inline-flex items-center p-1 text-sm font-medium
+                              text-gray-500 bg-white border border-gray-300
+                              rounded-full focus:outline-none hover:bg-gray-100 
+                              ocus:ring-4 focus:ring-gray-200 dark:bg-gray-800
+                              dark:text-gray-400 dark:border-gray-600
+                              dark:hover:bg-gray-700 dark:hover:border-gray-600
+                              dark:focus:ring-gray-700"
+                              type="button"
+                            >
                               <span className="sr-only">Quantity button</span>
                               <svg
                                 className="w-4 h-4"
@@ -108,13 +117,7 @@ const BagPage = () => {
                                 </svg>
                             </button>
                             <div>
-                              <input
-                                type="number"
-                                id="second_product"
-                                className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder={product.quantity}
-                                required
-                              />
+                            {product.quantity}
                             </div>
                             <button
                               className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
