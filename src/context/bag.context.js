@@ -56,6 +56,15 @@ const decreaseItemsFromBagPage = (bagProducts, productToDecreaseFromBag) => {
   );
 }
 
+const increaseItemsFromBagPage = (bagProducts, productToIncreaseFromBag) => {
+
+  return bagProducts.map((bagProduct) =>
+    bagProduct.id === productToIncreaseFromBag.id
+      ? { ...bagProduct, quantity: bagProduct.quantity + 1 }
+      : bagProduct
+  );
+}
+
 export const BagContext = createContext({
   isBagDropdownOpen: false,
   setIsBagDropdownOpen: () => {},
@@ -64,6 +73,7 @@ export const BagContext = createContext({
   bagTotalItemsCount: 0,
   removeItemsFromBag: () => {},
   decreaseItemsFromBag: () => {},
+  increaseItemsFromBag: () => {},
 });
 
 export const BagProvider = ({ children }) => {
@@ -87,6 +97,10 @@ export const BagProvider = ({ children }) => {
     setProductToBag(decreaseItemsFromBagPage(bagProducts, productToDecreaseFromBag))
   }
 
+  const increaseItemsFromBag = (productToIncreaseFromBag) => {
+    setProductToBag(increaseItemsFromBagPage(bagProducts, productToIncreaseFromBag))
+  }
+
   const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
 
   const value = {
@@ -96,7 +110,8 @@ export const BagProvider = ({ children }) => {
     addItemsToBag,
     bagTotalItemsCount,
     removeItemsFromBag,
-    decreaseItemsFromBag
+    decreaseItemsFromBag,
+    increaseItemsFromBag
   };
 
   return (
