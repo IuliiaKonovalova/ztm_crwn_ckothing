@@ -19,6 +19,10 @@ const BagPage = () => {
     removeItemsFromBag(item);
   };
 
+  const decreaseItemsFromBagInTable = (item) => {
+    decreaseItemsFromBag(item);
+  };
+
   return (
     <Layout title="Products">
       <div className=" flex-auto flex-col items-center my-4 max-w-screen-xl">
@@ -100,6 +104,7 @@ const BagPage = () => {
                               dark:hover:bg-gray-700 dark:hover:border-gray-600
                               dark:focus:ring-gray-700"
                               type="button"
+                              onClick={() => decreaseItemsFromBagInTable(product)}
                             >
                               <span className="sr-only">Quantity button</span>
                               <svg
@@ -120,7 +125,13 @@ const BagPage = () => {
                             {product.quantity}
                             </div>
                             <button
-                              className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                              className="inline-flex items-center p-1 text-sm font-medium
+                              text-gray-500 bg-white border border-gray-300
+                              rounded-full focus:outline-none hover:bg-gray-100
+                              focus:ring-4 focus:ring-gray-200 dark:bg-gray-800
+                              dark:text-gray-400 dark:border-gray-600
+                              dark:hover:bg-gray-700 dark:hover:border-gray-600
+                              dark:focus:ring-gray-700"
                               type="button"
                             >
                               <span
