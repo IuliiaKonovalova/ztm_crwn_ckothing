@@ -14,7 +14,12 @@ const BagPage = () => {
     removeItemsFromBag,
     decreaseItemsFromBag,
     increaseItemsFromBag,
+    totalBagPrice,
   } = useContext(BagContext);
+
+  useState(() => {
+    setIsBagDropdownOpen(false);
+  }, []);
 
   const removeItemFromBagFromBagPage = (item) => {
     removeItemsFromBag(item);
@@ -34,6 +39,7 @@ const BagPage = () => {
         <h1 className="text-4xl font-semibold my-16 text-center">
           Bag
         </h1>
+
         {bagProducts.length === 0 ? (
           <div className="flex flex-col items-center">
           <h1 className="text-2xl font-semibold my-6 text-center">
