@@ -1,11 +1,15 @@
 import { createContext, useState, useEffect } from "react";
 
+const getExistingBagItem = (bagProducts, itemToCheck) => {
+  return bagProducts.find(
+    (bagProduct) => bagProduct.id === itemToCheck.id
+  )
+}
+
 
 const addBagItems = (bagProducts, productToAddToBag) => {
 
-  const existingBagItem = bagProducts.find(
-    (bagProduct) => bagProduct.id === productToAddToBag.id
-  );
+  const existingBagItem = getExistingBagItem(bagProducts, productToAddToBag);
 
   if (existingBagItem) {
     return bagProducts.map((bagProduct) =>
@@ -20,14 +24,10 @@ const addBagItems = (bagProducts, productToAddToBag) => {
 
 const removeProductFromBag = (bagProducts, productToRemoveFromBag) => {
 
-  const existingBagItem = bagProducts.find(
-    (bagProduct) => bagProduct.id === productToRemoveFromBag.id
-  );
-  // return bagProducts.map((bagProduct) =>
-  //   bagProduct.id === productToRemoveFromBag.id
-  //     ? { ...bagProduct, quantity: bagProduct.quantity - 1 }
-  //     : bagProduct
-  // );
+  const existingBagItem = getExistingBagItem(
+    bagProducts,
+    productToRemoveFromBag
+  )
 
   existingBagItem.quantity = 0;
 
@@ -39,9 +39,10 @@ const removeProductFromBag = (bagProducts, productToRemoveFromBag) => {
 
 const decreaseItemsFromBagPage = (bagProducts, productToDecreaseFromBag) => {
 
-  const existingBagItem = bagProducts.find(
-    (bagProduct) => bagProduct.id === productToDecreaseFromBag.id
-  );
+  const existingBagItem = getExistingBagItem(
+    bagProducts,
+    productToDecreaseFromBag
+  )
 
   if (existingBagItem.quantity === 1) {
     return bagProducts.filter(
@@ -81,7 +82,9 @@ export const BagProvider = ({ children }) => {
   const [bagTotalItemsCount, setBagTotalItemsCount] = useState(0);
 
   useEffect(() => {
-    let newTotalItemsCount = bagProducts.reduce((accumulator, bagProduct) => accumulator + bagProduct.quantity, 0);
+    let newTotalItemsCount = bagProducts.reduce(
+      (accumulator, bagProduct) => accumulator + bagProduct.quantity, 0
+    );
     setBagTotalItemsCount(newTotalItemsCount);
   }, [bagProducts]);
 
@@ -111,7 +114,7 @@ export const BagProvider = ({ children }) => {
     bagTotalItemsCount,
     removeItemsFromBag,
     decreaseItemsFromBag,
-    increaseItemsFromBag
+    increaseItemsFromBag,
   };
 
   return (
