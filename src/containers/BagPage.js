@@ -13,6 +13,7 @@ const BagPage = () => {
     bagTotalItemsCount,
     removeItemsFromBag,
     decreaseItemsFromBag,
+    increaseItemsFromBag,
   } = useContext(BagContext);
 
   const removeItemFromBagFromBagPage = (item) => {
@@ -21,6 +22,10 @@ const BagPage = () => {
 
   const decreaseItemsFromBagInTable = (item) => {
     decreaseItemsFromBag(item);
+  };
+
+  const increaseItemsFromBagPageInTable = (item) => {
+    increaseItemsFromBag(item);
   };
 
   return (
@@ -133,6 +138,7 @@ const BagPage = () => {
                               dark:hover:bg-gray-700 dark:hover:border-gray-600
                               dark:focus:ring-gray-700"
                               type="button"
+                              onClick={() => increaseItemsFromBagPageInTable(product)}
                             >
                               <span
                                 className="sr-only"
