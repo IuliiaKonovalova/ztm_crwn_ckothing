@@ -11,7 +11,8 @@ const BagPage = () => {
     bagProducts,
     addItemsToBag,
     bagTotalItemsCount,
-    removeItemsFromBag
+    removeItemsFromBag,
+    decreaseItemsFromBag,
   } = useContext(BagContext);
 
   const removeItemFromBagFromBagPage = (item) => {
