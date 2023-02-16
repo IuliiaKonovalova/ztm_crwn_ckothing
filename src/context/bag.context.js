@@ -75,17 +75,26 @@ export const BagContext = createContext({
   removeItemsFromBag: () => {},
   decreaseItemsFromBag: () => {},
   increaseItemsFromBag: () => {},
+  totalBagPrice: 0,
 });
 
 export const BagProvider = ({ children }) => {
   const [bagProducts, setProductToBag] = useState([]);
   const [bagTotalItemsCount, setBagTotalItemsCount] = useState(0);
+  const [totalBagPrice, setTotalBagPrice] = useState(0);
 
   useEffect(() => {
     let newTotalItemsCount = bagProducts.reduce(
       (accumulator, bagProduct) => accumulator + bagProduct.quantity, 0
     );
     setBagTotalItemsCount(newTotalItemsCount);
+  }, [bagProducts]);
+
+  useEffect(() => {
+    let newTotalBagPrice = bagProducts.reduce(
+      (accumulator, bagProduct) => accumulator + bagProduct.price * bagProduct.quantity, 0
+    );
+    setTotalBagPrice(newTotalBagPrice);
   }, [bagProducts]);
 
   const addItemsToBag = (productToAddToBag) => {
@@ -115,6 +124,7 @@ export const BagProvider = ({ children }) => {
     removeItemsFromBag,
     decreaseItemsFromBag,
     increaseItemsFromBag,
+    totalBagPrice,
   };
 
   return (
