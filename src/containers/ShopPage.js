@@ -1,7 +1,8 @@
 import Layout from "../components/Layout";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../context/products.context";
 import { BagContext } from "../context/bag.context"
+
 
 const ShopPage = () => {
 
@@ -11,7 +12,6 @@ const ShopPage = () => {
   const addItemFromShopToBag = (product)=> {
     addItemsToBag(product)
   }
-
 
   return (
     <Layout title="Products">
