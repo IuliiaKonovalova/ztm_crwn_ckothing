@@ -39,7 +39,7 @@ const BagPage = () => {
         <h1 className="text-4xl font-semibold my-16 text-center">
           Bag
         </h1>
-
+        <h2>Total: {totalBagPrice}</h2>
         {bagProducts.length === 0 ? (
           <div className="flex flex-col items-center">
           <h1 className="text-2xl font-semibold my-6 text-center">
@@ -55,7 +55,9 @@ const BagPage = () => {
           <div className="grid items-center">
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50
+                  dark:bg-gray-700 dark:text-gray-400"
+                >
                   <tr>
                     <th scope="col" className="px-6 py-3">
                       <span className="sr-only">Image</span>
@@ -92,7 +94,9 @@ const BagPage = () => {
                   {bagProducts.map((product) => {
                     return (
                       <tr
-                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                        className="bg-white border-b dark:bg-gray-800
+                          dark:border-gray-700 hover:bg-gray-50
+                          dark:hover:bg-gray-600"
                         key={product.id}
                       >
                         <td className="flex items-center py-2 ml-2 sm:w-20">
@@ -101,8 +105,11 @@ const BagPage = () => {
                               alt={product.name}
                               />
                         </td>
-                        <td className="pl-2 py-2  lg:p-6 font-semibold text-gray-900 dark:text-white mr-4">
-                            {product.name}
+                        <td
+                          className="pl-2 py-2  lg:p-6 font-semibold text-gray-900
+                          dark:text-white mr-4"
+                        >
+                          {product.name}
                         </td>
                         <td className=" py-2 lg:p-6">
                           <div className="flex items-center space-x-3">
@@ -130,7 +137,7 @@ const BagPage = () => {
                                     clip-rule="evenodd"
                                   >
                                   </path>
-                                </svg>
+                              </svg>
                             </button>
                             <div>
                             {product.quantity}
@@ -168,8 +175,10 @@ const BagPage = () => {
                             </button>
                           </div>
                         </td>
-                        <td className="py-2 font-semibold text-gray-900 dark:text-white text-center">
-                            ${product.price}
+                        <td className="py-2 font-semibold text-gray-900
+                          dark:text-white text-center"
+                        >
+                          ${product.price * product.quantity}
                         </td>
                         <td className="py-2 text-center">
                           <button
