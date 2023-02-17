@@ -18,6 +18,8 @@ import {
   getDoc,
   collection,
   writeBatch,
+  query,
+  getDocs,
 } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -63,6 +65,20 @@ export const addCollectionAndDocuments = async (
 
   console.log('documents added');
   return await batch.commit();
+};
+
+export const getCategorizedAndDocuments = async (collectionKey) => {
+  const collectionRef = collection(db,'categories');
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, doc) => {
+    const { title, items } = doc.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
 };
 
 
