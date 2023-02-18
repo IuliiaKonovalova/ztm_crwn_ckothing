@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { lazy, Suspense } from 'react';
 import { UserProvider } from './context/user.context';
-import { ProductsProvider } from './context/products.context';
+import { CategoriesProvider } from './context/categories.context';
 import { BagProvider } from './context/bag.context';
 
 const HomePage = lazy(() => import("./containers/HomePage"));
@@ -17,7 +17,7 @@ function App() {
     <>
       <BrowserRouter>
         <UserProvider>
-          <ProductsProvider>
+          <CategoriesProvider>
             <BagProvider>
               <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
@@ -30,7 +30,7 @@ function App() {
                 </Routes>
               </Suspense>
             </BagProvider>
-          </ProductsProvider>
+          </CategoriesProvider>
         </UserProvider>
       </BrowserRouter>
     </>
