@@ -54,10 +54,7 @@ export const addCollectionAndDocuments = async (
 ) => {
   const batch = writeBatch(db);
   const collectionRef = collection(db, collectionKey);
-  console.log('collectionRef');
-  console.log(collectionRef);
-  console.log(objectsToAdd);
-  
+
   objectsToAdd.forEach((object) => {
     const docRef = doc(collectionRef, object.title.toLowerCase());
     batch.set(docRef, object);
@@ -67,13 +64,12 @@ export const addCollectionAndDocuments = async (
   return await batch.commit();
 };
 
-export const getCategorizedAndDocuments = async (collectionKey) => {
-  const collectionRef = collection(db,'categories');
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
-
   const querySnapshot = await getDocs(q);
-  const categoryMap = querySnapshot.docs.reduce((acc, doc) => {
-    const { title, items } = doc.data();
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
     acc[title.toLowerCase()] = items;
     return acc;
   }, {});
@@ -85,13 +81,7 @@ export const getCategorizedAndDocuments = async (collectionKey) => {
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation={}) => {
   if (!userAuth) return; 
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userDocRef);
-
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
-  console.log(userSnapshot.exists());
-
-
   // if user does not exist, create a new user
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
