@@ -9,7 +9,7 @@ const ProductCard = ({ key, product }) => {
   return (
     <a
       key={key}
-      className="xl:w-52 c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+      className="w-48 c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
     >
       <div className="relative pb-48 overflow-hidden">
         <img
