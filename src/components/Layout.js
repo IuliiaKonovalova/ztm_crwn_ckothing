@@ -11,7 +11,7 @@ function Layout({ title, content, children }) {
         <meta name="description" content={content} />
       </Helmet>
       <Navbar />
-      <div className="flex-auto flex-col items-center p-4 w-full mx-auto ">
+      <div className="flex-auto flex-col items-center p-4 max-w-screen-xl mx-auto ">
         {children}
       </div>
       <Footer />
