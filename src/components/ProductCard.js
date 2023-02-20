@@ -9,7 +9,7 @@ const ProductCard = ({ key, product }) => {
   return (
     <a
       key={key}
-      className="w-48 c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+      className="w-48 m-2 c-card block bg-white shadow-md hover:shadow-xl rounded-md overflow-hidden"
     >
       <div className="relative pb-48 overflow-hidden">
         <img
@@ -20,7 +20,10 @@ const ProductCard = ({ key, product }) => {
           />
       </div>
       <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-        <h2 className="text-lg font-semibold mb-4">{product.name}</h2>
+        <h2 className="text-lg font-semibold mb-4">
+          {/* Reduce products name to 10 characters */}
+          {product.name.length > 10 ? product.name.substring(0, 10) + "..." : product.name}
+        </h2>
       </div>
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center">
