@@ -37,23 +37,23 @@ const CheckoutPage = () => {
         </div>
         ) : (
           <div className="grid items-center">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
-                    <th scope="col" class="px-6 py-3">
-                      <span class="sr-only">Image</span>
+                    <th scope="col" className="px-6 py-3">
+                      <span className="sr-only">Image</span>
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       Product
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       Qty
                     </th>
-                    <th scope="col" class="px-1 py-3 text-s">
+                    <th scope="col" className="px-1 py-3 text-s">
                       Price
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" className="px-6 py-3 text-center">
                       <svg
                         className="w-5 h-5"
                         xmlns="http://www.w3.org/2000/svg"
