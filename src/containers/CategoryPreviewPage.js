@@ -28,9 +28,14 @@ const CategoryPreviewPage = () => {
           { Object.keys(categoriesMap).map((category) => {
             return (
               <>
-                <div className="flex  flex-col">
-                  <h2 className="text-2xl font-semibold mx-2 text-left bg-gray-400">
-                    <span className="mx-2 text-gray-800">
+                <div
+                  // set key by a number to avoid error
+                  key={Math.random()}
+                  className="flex  flex-col">
+                  <h2
+                    className="text-2xl font-semibold mx-2 text-left bg-gray-400">
+                    <span
+                      className="mx-2 text-gray-800">
                     {category.toUpperCase()} 
                     </span>
                   </h2>
