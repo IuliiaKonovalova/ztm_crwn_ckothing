@@ -1,4 +1,6 @@
-import { createContext, useState, useEffect } from "react";
+import {
+  createContext, useState, useEffect, useReducer
+} from "react";
 
 const getExistingBagItem = (bagProducts, itemToCheck) => {
   return bagProducts.find(
@@ -77,6 +79,30 @@ export const BagContext = createContext({
   increaseItemsFromBag: () => {},
   totalBagPrice: 0,
 });
+
+const INITIAL_STATE = {
+  isBagDropdownOpen: false,
+  bagProducts: [],
+  bagTotalItemsCount: 0,
+  totalBagPrice: 0,
+};
+
+const bagReducer = (state, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case "SET_BAG_DROPDOWN_OPEN":
+      return { ...state, isBagDropdownOpen: payload };
+    case "SET_BAG_PRODUCTS":
+      return { ...state, bagProducts: payload };
+    case "SET_BAG_TOTAL_ITEMS_COUNT":
+      return { ...state, bagTotalItemsCount: payload };
+    case "SET_TOTAL_BAG_PRICE":
+      return { ...state, totalBagPrice: payload };
+    default:
+      throw new Error(`Unhandled type ${type} in bagReducer`);
+  }
+};
 
 export const BagProvider = ({ children }) => {
   const [bagProducts, setProductToBag] = useState([]);
