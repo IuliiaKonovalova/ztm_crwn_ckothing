@@ -91,59 +91,91 @@ const bagReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "SET_BAG_DROPDOWN_OPEN":
-      return { ...state, isBagDropdownOpen: payload };
-    case "SET_BAG_PRODUCTS":
-      return { ...state, bagProducts: payload };
-    case "SET_BAG_TOTAL_ITEMS_COUNT":
-      return { ...state, bagTotalItemsCount: payload };
-    case "SET_TOTAL_BAG_PRICE":
-      return { ...state, totalBagPrice: payload };
+    case 'SET_BAG':
+      return { ...state, ...payload };
     default:
       throw new Error(`Unhandled type ${type} in bagReducer`);
   }
 };
 
 export const BagProvider = ({ children }) => {
-  const [bagProducts, setProductToBag] = useState([]);
-  const [bagTotalItemsCount, setBagTotalItemsCount] = useState(0);
-  const [totalBagPrice, setTotalBagPrice] = useState(0);
+  // const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
+  // const [bagProducts, setProductToBag] = useState([]);
+  // const [bagTotalItemsCount, setBagTotalItemsCount] = useState(0);
+  // const [totalBagPrice, setTotalBagPrice] = useState(0);
 
-  useEffect(() => {
-    let newTotalItemsCount = bagProducts.reduce(
+  // useEffect(() => {
+  //   let newTotalItemsCount = bagProducts.reduce(
+  //     (accumulator, bagProduct) => accumulator + bagProduct.quantity, 0
+  //   );
+  //   setBagTotalItemsCount(newTotalItemsCount);
+  // }, [bagProducts]);
+
+  // useEffect(() => {
+  //   let newTotalBagPrice = bagProducts.reduce(
+  //     (accumulator, bagProduct) => accumulator + bagProduct.price * bagProduct.quantity, 0
+  //   );
+  //   setTotalBagPrice(newTotalBagPrice);
+  // }, [bagProducts]);
+
+  const [
+    {
+      isBagDropdownOpen,
+      bagProducts,
+      bagTotalItemsCount,
+      totalBagPrice,
+    },
+    dispatch
+  ] = useReducer(bagReducer, INITIAL_STATE);
+
+  const updateBagItemsReducer = (newBagProducts) => {
+    const mewBagTotalItemsCount = newBagProducts.reduce(
       (accumulator, bagProduct) => accumulator + bagProduct.quantity, 0
     );
-    setBagTotalItemsCount(newTotalItemsCount);
-  }, [bagProducts]);
-
-  useEffect(() => {
-    let newTotalBagPrice = bagProducts.reduce(
+    const newTotalBagPrice = newBagProducts.reduce(
       (accumulator, bagProduct) => accumulator + bagProduct.price * bagProduct.quantity, 0
     );
-    setTotalBagPrice(newTotalBagPrice);
-  }, [bagProducts]);
+
+    dispatch({
+      type: 'SET_BAG', payload: {
+        bagProducts: newBagProducts,
+        bagTotalItemsCount: mewBagTotalItemsCount,
+        totalBagPrice: newTotalBagPrice,
+      }
+    })
+  }
+
 
   const addItemsToBag = (productToAddToBag) => {
-    setProductToBag(addBagItems(bagProducts, productToAddToBag))
+    const newBagProducts = addBagItems(bagProducts, productToAddToBag)
+    updateBagItemsReducer(newBagProducts);
   }
 
   const removeItemsFromBag = (productToRemoveFromBag) => {
-    setProductToBag(removeProductFromBag(bagProducts, productToRemoveFromBag))
+    const newBagProducts = 
+      removeProductFromBag(bagProducts, productToRemoveFromBag)
+
+    updateBagItemsReducer(newBagProducts);
   }
 
   const decreaseItemsFromBag = (productToDecreaseFromBag) => {
-    setProductToBag(decreaseItemsFromBagPage(bagProducts, productToDecreaseFromBag))
+    const newBagProducts = 
+      decreaseItemsFromBagPage(bagProducts, productToDecreaseFromBag)
+
+    updateBagItemsReducer(newBagProducts);
   }
 
   const increaseItemsFromBag = (productToIncreaseFromBag) => {
-    setProductToBag(increaseItemsFromBagPage(bagProducts, productToIncreaseFromBag))
+    const newBagProducts = 
+      increaseItemsFromBagPage(bagProducts, productToIncreaseFromBag)
+
+    updateBagItemsReducer(newBagProducts);
   }
 
-  const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
 
   const value = {
     isBagDropdownOpen,
-    setIsBagDropdownOpen,
+    setIsBagDropdownOpen: true,
     bagProducts,
     addItemsToBag,
     bagTotalItemsCount,
