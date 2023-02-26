@@ -9,7 +9,6 @@ import ProductCard from "../components/ProductCard";
 const ShopPage = () => {
 
   const { categoriesMap } = useContext(CategoriesContext);
-  console.log(categoriesMap);
 
   const [productsToShow, setProductsToShow] = useState(categoriesMap);
   const [selectedCategory, setSelectedCategory] = useState(false);
@@ -20,7 +19,6 @@ const ShopPage = () => {
   }
 
   const category = Object.values(useParams());
-  console.log(category);
   // check category length to avoid error when category is empty
   if (category[0].length === 0) {
     console.log("category is empty")
@@ -34,7 +32,6 @@ const ShopPage = () => {
     } else {
       setProductsToShow(categoriesMap);
       setSelectedCategory(false);
-      console.log(selectedCategory)
     }
   }, [category]);
 
@@ -47,7 +44,6 @@ const ShopPage = () => {
         <div className="flex flex-wrap justify-center items-center">
           {selectedCategory ? (
             productsToShow?.map((product) => {
-              console.log(selectedCategory)
               return(
                 <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/5 p-4">
                   <ProductCard product={product} addItemFromShopToBag={addItemFromShopToBag}/>
@@ -58,13 +54,11 @@ const ShopPage = () => {
           ) : (
             <div className="flex flex-wrap justify-center items-center">
               {Object.keys(categoriesMap).map((key) => {
-                              console.log(selectedCategory)
-                console.log(categoriesMap[key])
                   return (
                     <>
                       {categoriesMap[key].map((product) => {
                         return(
-                          <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/5 p-4">
+                          <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/5 p-4">
                             <ProductCard product={product} addItemFromShopToBag={addItemFromShopToBag}/>
                           </div>
                         )
