@@ -8,7 +8,7 @@ const ProductCard = ({ key, product }) => {
   }
   return (
     <a
-      key={key}
+      key={product.id}
       className="w-48 m-2 c-card block bg-white shadow-md hover:shadow-xl rounded-md overflow-hidden"
     >
       <div className="relative pb-48 overflow-hidden">
