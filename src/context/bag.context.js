@@ -88,6 +88,11 @@ const bagReducer = (state, action) => {
         ...state,
         ...payload,
       };
+    case BAG_ACTION_TYPES.SET_IS_CART_OPEN:
+      return {
+        ...state,
+        isBagDropdownOpen: payload,
+      }
     default:
       throw new Error(`Unhandled type ${type} in cartReducer`);
   }
@@ -107,10 +112,11 @@ export const BagContext = createContext({
 
 export const BagProvider = ({ children }) => {
 
-  const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
+  // const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
 
   const [
     {
+      isBagDropdownOpen,
       bagProducts,
       bagTotalItemsCount,
       totalBagPrice,
@@ -166,6 +172,10 @@ export const BagProvider = ({ children }) => {
       increaseItemsFromBagPage(bagProducts, productToIncreaseFromBag)
 
     updateBagItemsReducer(newBagProducts);
+  }
+
+  const setIsBagDropdownOpen = (bool) => {
+    dispatch(createAction(BAG_ACTION_TYPES.SET_IS_CART_OPEN, bool));
   }
 
 
