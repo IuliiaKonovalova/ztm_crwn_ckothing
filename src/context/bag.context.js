@@ -112,8 +112,6 @@ export const BagContext = createContext({
 
 export const BagProvider = ({ children }) => {
 
-  // const [isBagDropdownOpen, setIsBagDropdownOpen] = useState(false);
-
   const [
     {
       isBagDropdownOpen,
@@ -136,14 +134,14 @@ export const BagProvider = ({ children }) => {
     );
 
     // create payload
-    const payload = {
+    const payloadBagContent = {
       bagProducts: newBagProducts,
       bagTotalItemsCount: newBagTotalItemsCount,
       totalBagPrice: newTotalBagPrice,
     };
 
-    // dispatch action to update bag items
-    dispatch({ type: BAG_ACTION_TYPES.SET_CART_ITEMS, payload })
+    // update bag reducer
+    dispatch(createAction(BAG_ACTION_TYPES.SET_CART_ITEMS, payloadBagContent))
   }
 
   const addItemsToBag = (productToAddToBag) => {
@@ -174,6 +172,7 @@ export const BagProvider = ({ children }) => {
     updateBagItemsReducer(newBagProducts);
   }
 
+  // set bag dropdown controller
   const setIsBagDropdownOpen = (bool) => {
     dispatch(createAction(BAG_ACTION_TYPES.SET_IS_CART_OPEN, bool));
   }
