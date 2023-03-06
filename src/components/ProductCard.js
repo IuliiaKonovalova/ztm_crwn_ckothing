@@ -20,12 +20,11 @@ const ProductCard = ({ key, product }) => {
           />
       </div>
       <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-        <h2 className="text-lg font-semibold mb-4">
-          {/* Reduce products name to 10 characters */}
+        <h2 className="text-lg font-semibold mb-4 ml-2">
           {product.name.length > 10 ? product.name.substring(0, 10) + "..." : product.name}
         </h2>
       </div>
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="flex items-center justify-between px-2 pb-3">
         <div className="flex items-center">
           <div className="flex items-center">
             <button
