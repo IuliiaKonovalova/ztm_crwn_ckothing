@@ -22,9 +22,9 @@ function App() {
             <BagProvider>
               <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/shop/*" element={<CategoryPreviewPage />} />
-                  {/* <Route path="/:category" element={<CategoryPreviewPage />} /> */}
+                  <Route path="/" element={<CategoryPreviewPage />} />
+                  <Route path="/shop/*" element={<ShopPage />} />
+                  {/* <Route path="/category" element={<CategoryPreviewPage />} /> */}
                   <Route path="/signin" element={<SignInPage />} />
                   <Route path="/signup" element={<SignUpPage />} />
                   <Route path="/bag" element={<BagPage />} />
