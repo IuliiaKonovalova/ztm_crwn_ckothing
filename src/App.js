@@ -1,11 +1,16 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { lazy, Suspense } from 'react';
-import { Provider } from 'react-redux';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
+import { store } from './store/store';
+import {
+  onAuthStateChangedListener,
+  createUserDocumentFromAuth,
+} from "./utils/firebase/firebase.utils";
+import { setCurrentUser } from './store/user/user.action';
 import { UserProvider } from './context/user.context';
 import { CategoriesProvider } from './context/categories.context';
 import { BagProvider } from './context/bag.context';
-import { store } from './store/store';
 
 const HomePage = lazy(() => import("./containers/HomePage"));
 const ShopPage = lazy(() => import("./containers/ShopPage"));
@@ -16,11 +21,25 @@ const CheckoutPage = lazy(() => import("./containers/CheckoutPage"));
 const CategoryPreviewPage = lazy(() => import("./containers/CategoryPreviewPage"));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubscribe;
+  }, []);
+
+
   return (
     <>
       <BrowserRouter>
-        <Provider store={store}>
-          <UserProvider>
+
+          {/* <UserProvider> */}
             <CategoriesProvider>
               <BagProvider>
                 <Suspense fallback={<div>Loading...</div>}>
@@ -36,8 +55,8 @@ function App() {
                 </Suspense>
               </BagProvider>
             </CategoriesProvider>
-          </UserProvider>
-        </Provider>
+          {/* </UserProvider> */}
+        {/* </Provider> */}
       </BrowserRouter>
     </>
   );
