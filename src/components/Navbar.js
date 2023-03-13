@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../context/user.context"
 import { signOutUser } from "../utils/firebase/firebase.utils"
+import { useSelector } from "react-redux"
 
 import BagDropdown from "./BagDropdown"
 import { BagContext } from "../context/bag.context"
@@ -10,7 +11,7 @@ import BagIcon from "../assets/images/shopping-bag.svg"
 const Navbar = () => {
   const [auth, setAuth] = useState(false)
   // Set the current user
-  const { currentUser } = useContext(UserContext)
+  const currentUser = useSelector(state => state.user.currentUser)
 
   // Set the bag dropdown
   const {
