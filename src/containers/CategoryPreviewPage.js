@@ -30,9 +30,9 @@ const CategoryPreviewPage = () => {
               <>
                 <div
                   // set key by a number to avoid error
-                  key={Math.random()}
                   className="flex  flex-col">
                   <h2
+                      key={category.name}
                     className="text-2xl font-semibold mx-2 text-left bg-gray-400">
                     <span
                       className="mx-2 text-gray-800">
